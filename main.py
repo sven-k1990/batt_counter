@@ -6,13 +6,12 @@ def get_capacity(T, P):
     """
     U = 12 # Напряжение аккумулятора
     K = 0.8 # КПД инвертора
-    K_gr = 0.6 # глубина разряда АКБ
+    K_gr = 0.8 # глубина разряда АКБ
     K_de = 0.8 # коэфициент доступной емкости зависит
                # от температуры и времени разряда
 
                
     C_gen = (P*1000 * T) / (U * K * K_de * K_gr)
-    print(C_gen)
     return C_gen
 
 def get_bat_cap(C, N):
@@ -31,8 +30,8 @@ def main():
     N = int(input("Введите число АКБ в ИБП: "))
     C_gen = get_capacity(T, P)
     C_bat = get_bat_cap(C_gen, N)
-    print("Общая емкость должна быть: {}".format(C_gen))
-    print("Емкость одной батареи должна быть: {}".format(C_bat))
+    print("Общая емкость должна быть: {:02.2f}".format(C_gen))
+    print("Емкость одной батареи должна быть: {:02.2f}".format(C_bat))
 
 if __name__ == "__main__":
     main()
