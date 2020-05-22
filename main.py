@@ -28,7 +28,7 @@ def main():
     T = int(input("Введите время автономной работы в часах: "))
     P = int(input("Введите необходимую мощность нагрузки в кВт: "))
     N = int(input("Введите число АКБ в ИБП: "))
-    C_gen = get_capacity(T, P, 2)
+    C_gen = get_capacity(T, P)
     C_bat = get_bat_cap(C_gen, N)
     print("Общая емкость должна быть: {:02.2f}".format(C_gen))
     print("Емкость одной батареи должна быть: {:02.2f}".format(C_bat))
