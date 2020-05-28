@@ -15,7 +15,17 @@ def get_bat_cap(C, N):
     C_bat = C / N
     return C_bat
 
-def get_K(K=0.8, K_gr=0.7, K_de = 0.9 ):
+def get_work_time(C_bat, N, P):
+    """
+    Принимаем емкость батареи, число батарей, нагрузку
+    возвращает время автономной работы в часах
+    """
+    C_gen = C_bat * N
+    U = 12
+    T = (U * get_K()) / (C_gen * P*1000 )
+    return T
+
+def get_K(K=0.99, K_gr=0.8, K_de = 0.9 ):
     """
     Принимает коэфициенты такие как
     K - КПД инвертора
@@ -26,7 +36,7 @@ def get_K(K=0.8, K_gr=0.7, K_de = 0.9 ):
 
 def main():
     T = int(input("Введите время автономной работы в часах: "))
-    P = int(input("Введите необходимую мощность нагрузки в кВт: "))
+    P = float(input("Введите необходимую мощность нагрузки в кВт: "))
     N = int(input("Введите число АКБ в ИБП: "))
     C_gen = get_capacity(T, P)
     C_bat = get_bat_cap(C_gen, N)
